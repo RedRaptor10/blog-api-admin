@@ -1,0 +1,174 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/* End Reset */
+
+:root {
+  --primary-color: rgb(32, 32, 32);
+  --background-color: rgb(24, 24, 24);
+  --color: rgb(224, 224, 224);
+  --link-color: rgb(128, 128, 128);
+}
+
+body {
+  background: var(--background-color);
+  color: var(--color);
+  font-family: 'Helvetica', 'Trebuchet MS', 'Arial', 'sans-serif';
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font: revert;
+}
+
+i, em {
+  font-style: italic;
+}
+
+a {
+  color: rgb(224, 224, 224);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #fff;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--primary-color);
+  padding: 24px;
+  cursor: default;
+}
+
+header h1 a {
+  color: #fff;
+  transition: 0.1s;
+}
+
+header button {
+  background: none;
+  padding: 4px;
+  color: var(--color);
+  font-size: 20px;
+  transition: 0.1s;
+}
+
+header button:hover {
+  color: #fff;
+}
+
+header a:not(:last-child) {
+  margin-right: 12px;
+}
+
+/* Footer */
+footer {
+  background: var(--primary-color);
+  padding: 24px;
+  text-align: center;
+}
+
+footer a {
+  text-decoration: underline;
+  transition: 0.1s;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
+/* Main */
+main {
+  width: 75%;
+  min-height: 100vh;
+  margin: 0 auto 0 auto;
+  padding: 32px;
+}
+
+/* Log In */
+#log-in-form {
+    width: 25%;
+    margin: 0 auto 0 auto;
+  }
+
+  #log-in-form input {
+    display: block;
+    background: var(--primary-color);
+    width: 100%;
+    margin: 12px 0 12px 0;
+    color: #fff;
+    font-size: 16px;
+    border: 0;
+    border-radius: 4px;
+  }
+
+  #log-in-form button {
+    background: var(--primary-color);
+    padding: 4px 16px 4px 16px;
+    color: var(--color);
+    font-size: 20px;
+    border-radius: 4px;
+  }
+
+  #log-in-form button:hover {
+    color: #fff;
+  }
+
+  #form-errors {
+    list-style: disc;
+    margin-top: 12px;
+  }
