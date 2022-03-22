@@ -14,7 +14,7 @@ const Header = ({user, setUser, deleteCookie}) => {
     return(
         <header>
             <h1>
-                <Link to="/">Blog</Link>
+                <Link to="/">Blog - Admin</Link>
             </h1>
             {user ?
                 <div>

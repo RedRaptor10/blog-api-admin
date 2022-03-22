@@ -4,6 +4,10 @@ import Header from './Header';
 import Footer from './Footer';
 import Home from './Home';
 import Users from './Users';
+import UserDelete from './UserDelete';
+import Posts from './Posts';
+import Post from './Post';
+import PostDelete from './PostDelete';
 import { getCookie, deleteCookie } from '../helpers/cookies.js';
 
 const App = () => {
@@ -46,6 +50,10 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Home user={user} />} />
         <Route exact path="/users" element={<Users user={user} />} />
+        <Route exact path="/users/:username/delete" element={<UserDelete user={user} setUser={setUser} />} />
+        <Route exact path="/posts" element={<Posts user={user} />} />
+        <Route exact path="/posts/:postId" element={<Post user={user} setUser={setUser} />} />
+        <Route exact path="/posts:postId/delete" element={<PostDelete user={user} setUser={setUser} />} />
       </Routes>
       <Footer />
     </HashRouter>
