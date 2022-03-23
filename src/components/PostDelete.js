@@ -18,10 +18,7 @@ const PostDelete = ({user, setUser}) => {
 
         let options = {
             method: 'POST',
-            headers: {
-				'Authorization': 'Bearer ' + token,
-				'Content-Type': 'application/json'
-			},
+            headers: { 'Authorization': 'Bearer ' + token },
             mode: 'cors'
         };
 

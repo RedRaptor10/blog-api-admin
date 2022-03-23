@@ -5,4 +5,9 @@ const formatDate = (time) => {
     return DateTime.fromJSDate(new Date(time)).toLocaleString(DateTime.DATE_MED);
 };
 
-export default formatDate;
+// Remove trailing 'Z' timezone from ISOString date (YYYY-MM-DDTmm:ss.sssZ)
+const removeTimeZone = (ISOString) => {
+    return ISOString.substring(0, ISOString.length - 1);
+};
+
+export { formatDate, removeTimeZone };

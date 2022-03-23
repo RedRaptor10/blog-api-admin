@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import formatDate from '../helpers/formatDate.js';
+import { formatDate } from '../helpers/formatDate.js';
 import { getCookie, deleteCookie } from '../helpers/cookies.js';
 
 const Posts = ({user, setUser}) => {
@@ -89,7 +89,9 @@ const Posts = ({user, setUser}) => {
                                 <td>{formatDate(post.date)}</td>
                                 <td>{post.published ? 'Published' : 'Draft'}</td>
                                 <td>
-                                    <button>Edit</button>
+                                    <Link to={`/posts/${post._id}/update`}>
+                                        <button>Edit</button>
+                                    </Link>
                                     <Link to={`/posts/${post._id}/delete`}>
                                         <button>Delete</button>
                                     </Link>

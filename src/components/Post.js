@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import formatDate from '../helpers/formatDate.js';
 import Comment from './Comment';
+import { formatDate } from '../helpers/formatDate.js';
 import { getCookie, deleteCookie } from '../helpers/cookies.js';
 
 const Post = ({user, setUser}) => {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import formatDate from '../helpers/formatDate.js';
+import { formatDate } from '../helpers/formatDate.js';
 import { getCookie, deleteCookie } from '../helpers/cookies.js';
 
 const Comment = ({user, setUser, comment, setComments, commentToUpdate, setCommentToUpdate }) => {
