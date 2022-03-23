@@ -31,7 +31,9 @@ const User = ({user}) => {
                                 <td>{userData.role}</td>
                                 <td>
                                     {userData.role !== 'admin' ?
-                                        <Link to={`/users/${userData.username}/delete`}>Delete</Link>
+                                        <Link to={`/users/${userData.username}/delete`}>
+                                            <button>Delete</button>
+                                        </Link>
                                     : null}
                                 </td>
                             </tr>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import formatDate from '../helpers/formatDate.js';
 import Comment from './Comment';
+import { getCookie, deleteCookie } from '../helpers/cookies.js';
 
 const Post = ({user, setUser}) => {
     const { postId } = useParams(); // Get post id from url
@@ -11,18 +12,77 @@ const Post = ({user, setUser}) => {
 
     // Get API data on componentDidUpdate
 	useEffect(() => {
-        fetch('http://localhost:3000/api/posts/' + postId, {mode: 'cors'})
-		.then(function(res) { return res.json(); })
-        .then(function(res) { setPost(res); });
+        if (user) {
+            fetch('http://localhost:3000/api/posts/' + postId, {mode: 'cors'})
+            .then(function(res) { return res.json(); })
+            .then(function(res) { setPost(res); });
 
-        fetch('http://localhost:3000/api/posts/' + postId + '/comments?sort=date&order=desc', {mode: 'cors'})
-        .then(function(res) { return res.json(); })
-        .then(function(res) { setComments(res); });
-    }, [postId]);
+            fetch('http://localhost:3000/api/posts/' + postId + '/comments?sort=date&order=desc', {mode: 'cors'})
+            .then(function(res) { return res.json(); })
+            .then(function(res) { setComments(res); });
+        }
+    }, [user, postId]);
+
+    const setPublished = event => {
+        event.preventDefault();
+
+        let token = getCookie('blog_api_token');
+        // If no token then unset user, delete cookie, and exit
+        if (token === '') {
+            setUser();
+            deleteCookie('blog_api_token');
+            return;
+        }
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: post.title,
+                author: post.author._id,
+                date: post.date,
+                content: post.content,
+                published: post.published ? false : true
+            }),
+            mode: 'cors'
+        };
+
+        fetch('http://localhost:3000/api/posts/' + postId + '/update', options)
+        .then(function(res) {
+            // If unauthorized then unset user, delete cookie, and throw error
+            if (res.statusText === 'Unauthorized') {
+                setUser();
+                deleteCookie('blog_api_token');
+                throw new Error(res.statusText);
+            } else {
+                return res.json();
+            }
+        })
+        .then(function(res) {
+            // Success. Set post state.
+            setPost({
+                ...post,
+                published: post.published ? false : true
+            });
+        })
+        .catch(err => {
+            console.log(err.message);
+        });;
+    };
 
 	return(
         post && post.author ?
             <main id="post">
+                <div id="admin-controls">
+                    {!post.published ?
+                        <button onClick={setPublished}>Publish</button>
+                    :
+                        <button onClick={setPublished}>Unpublish</button>
+                    }
+                </div>
                 <div id="post-info">
                     <h1 id="post-title">{post.title}</h1>
                     <div id="post-author">by <Link to={'/users/' + post.author.username}>{post.author.username}</Link></div>

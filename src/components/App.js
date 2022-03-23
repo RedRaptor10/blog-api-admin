@@ -51,7 +51,7 @@ const App = () => {
         <Route exact path="/" element={<Home user={user} />} />
         <Route exact path="/users" element={<Users user={user} />} />
         <Route exact path="/users/:username/delete" element={<UserDelete user={user} setUser={setUser} />} />
-        <Route exact path="/posts" element={<Posts user={user} />} />
+        <Route exact path="/posts" element={<Posts user={user} setUser={setUser} />} />
         <Route exact path="/posts/:postId" element={<Post user={user} setUser={setUser} />} />
         <Route exact path="/posts:postId/delete" element={<PostDelete user={user} setUser={setUser} />} />
       </Routes>
