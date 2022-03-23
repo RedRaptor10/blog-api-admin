@@ -57,7 +57,7 @@ const App = () => {
         <Route exact path="/posts/:postId" element={<Post user={user} setUser={setUser} />} />
 		<Route exact path="/posts/create" element={<PostCreate user={user} setUser={setUser} />} />
 		<Route exact path="/posts/:postId/update" element={<PostEdit user={user} setUser={setUser} />} />
-        <Route exact path="/posts:postId/delete" element={<PostDelete user={user} setUser={setUser} />} />
+        <Route exact path="/posts/:postId/delete" element={<PostDelete user={user} setUser={setUser} />} />
       </Routes>
       <Footer />
     </HashRouter>
