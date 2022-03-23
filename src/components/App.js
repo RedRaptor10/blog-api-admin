@@ -7,6 +7,7 @@ import Users from './Users';
 import UserDelete from './UserDelete';
 import Posts from './Posts';
 import Post from './Post';
+import PostCreate from './PostCreate';
 import PostEdit from './PostEdit';
 import PostDelete from './PostDelete';
 import { getCookie, deleteCookie } from '../helpers/cookies.js';
@@ -54,6 +55,7 @@ const App = () => {
         <Route exact path="/users/:username/delete" element={<UserDelete user={user} setUser={setUser} />} />
         <Route exact path="/posts" element={<Posts user={user} setUser={setUser} />} />
         <Route exact path="/posts/:postId" element={<Post user={user} setUser={setUser} />} />
+		<Route exact path="/posts/create" element={<PostCreate user={user} setUser={setUser} />} />
 		<Route exact path="/posts/:postId/update" element={<PostEdit user={user} setUser={setUser} />} />
         <Route exact path="/posts:postId/delete" element={<PostDelete user={user} setUser={setUser} />} />
       </Routes>

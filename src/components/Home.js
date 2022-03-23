@@ -49,6 +49,7 @@ const Home = ({user}) => {
                 <div>
                     <Link to="/users">Users</Link>
                     <Link to="/posts">Posts</Link>
+                    <Link to="/posts/create">New Post</Link>
                 </div>
             :
                 <form id="log-in-form" action="">

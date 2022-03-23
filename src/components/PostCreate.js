@@ -1,20 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
 import { getCookie, deleteCookie } from '../helpers/cookies.js';
 
-const PostEdit = ({user, setUser}) => {
-    const { postId } = useParams(); // Get post id from url
-    const [form, setForm] = useState();
+const PostCreate = ({user, setUser}) => {
+    const [form, setForm] = useState({
+        title: '',
+        content: '',
+        published: false
+    });
     const [formErrors, setFormErrors] = useState([]);
-
-    // Get API data on componentDidUpdate
-	useEffect(() => {
-        if (user) {
-            fetch('http://localhost:3000/api/posts/' + postId, {mode: 'cors'})
-            .then(function(res) { return res.json(); })
-            .then(function(res) { setForm(res); })
-        }
-    }, [user, postId]);
 
     const handleChange = event => {
         // On published form change, set state to form value
@@ -30,7 +23,7 @@ const PostEdit = ({user, setUser}) => {
         });
     };
 
-    const updatePost = event => {
+    const createPost = event => {
         event.preventDefault();
 
         let token = getCookie('blog_api_token');
@@ -49,15 +42,15 @@ const PostEdit = ({user, setUser}) => {
             },
             body: JSON.stringify({
                 title: form.title,
-                author: form.author._id,
-                date: form.date,
+                author: user.id,
+                date: new Date(),
                 content: form.content,
                 published: form.published
             }),
             mode: 'cors'
         };
 
-        fetch('http://localhost:3000/api/posts/' + postId + '/update', options)
+        fetch('http://localhost:3000/api/posts/create', options)
         .then(function(res) { return res.json(); })
         .then(function(res) {
             if (res.errors) { setFormErrors(res.errors); } // Fields required
@@ -69,7 +62,7 @@ const PostEdit = ({user, setUser}) => {
     };
 
     return (
-        user && form ?
+        user ?
             <div id="post-edit">
                 <form id="post-edit-form" action="">
                     <label htmlFor="title">Title</label>
@@ -78,7 +71,7 @@ const PostEdit = ({user, setUser}) => {
                     <textarea type="textarea" name="content" onChange={handleChange} value={form.content}></textarea>
                     <input type="checkbox" name="published" onChange={handleChange} checked={form.published}></input>
                     <label htmlFor="published">Published</label>
-                    <button type="submit" name="submit" onClick={updatePost}>Update</button>
+                    <button type="submit" name="submit" onClick={createPost}>Create</button>
                     {formErrors.length !== 0 ?
                         <ul id="form-errors">
                             {formErrors.map((formError, i) => {
@@ -94,4 +87,4 @@ const PostEdit = ({user, setUser}) => {
     );
 };
 
-export default PostEdit;
+export default PostCreate;
