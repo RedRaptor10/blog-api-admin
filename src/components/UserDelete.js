@@ -41,7 +41,7 @@ const UserDelete = ({user, setUser}) => {
                     Are you sure you want to delete user {username}?
                     <div>
                         <button onClick={deleteUser}>Delete</button>
-                        <Link to="/">
+                        <Link to="/users">
                             <button>Cancel</button>
                         </Link>
                     </div>

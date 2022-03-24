@@ -38,7 +38,7 @@ const PostDelete = ({user, setUser}) => {
                     Are you sure you want to delete this post?
                     <div>
                         <button onClick={deletePost}>Delete</button>
-                        <Link to="/">
+                        <Link to="/posts">
                             <button>Cancel</button>
                         </Link>
                     </div>
