@@ -25,7 +25,7 @@ const UserDelete = ({user, setUser}) => {
             mode: 'cors'
         };
 
-        fetch('http://localhost:3000/api/users/' + username + '/delete', options)
+        fetch(process.env.SERVER + 'api/users/' + username + '/delete', options)
         .then(function(res) { return res.json(); })
         .then(function(res) {
             // Success. Redirect to Users page

@@ -9,7 +9,7 @@ const Posts = ({user, setUser}) => {
     // Get API data on componentDidUpdate
     useEffect(() => {
         if (user) {
-            fetch('http://localhost:3000/api/posts', {mode: 'cors'})
+            fetch(process.env.SERVER + 'api/posts', {mode: 'cors'})
             .then(function(res) { return res.json(); })
             .then(function(res) { setPosts(res); });
         }
@@ -42,7 +42,7 @@ const Posts = ({user, setUser}) => {
             mode: 'cors'
         };
 
-        fetch('http://localhost:3000/api/posts/' + post._id + '/update', options)
+        fetch(process.env.SERVER + 'api/posts/' + post._id + '/update', options)
         .then(function(res) {
             // If unauthorized then unset user, delete cookie, and throw error
             if (res.statusText === 'Unauthorized') {
@@ -55,7 +55,7 @@ const Posts = ({user, setUser}) => {
         })
         .then(function(res) {
             // Success. Fetch posts again.
-            fetch('http://localhost:3000/api/posts', {mode: 'cors'})
+            fetch(process.env.SERVER + 'api/posts', {mode: 'cors'})
             .then(function(res) { return res.json(); })
             .then(function(res) { setPosts(res); });
         })

@@ -7,7 +7,7 @@ const User = ({user}) => {
     // Get API data on componentDidUpdate
     useEffect(() => {
         if (user) {
-            fetch('http://localhost:3000/api/users', {mode: 'cors'})
+            fetch(process.env.SERVER + 'api/users', {mode: 'cors'})
             .then(function(res) { return res.json(); })
             .then(function(res) { setUsers(res); });
         }
