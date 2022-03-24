@@ -50,7 +50,7 @@ const PostCreate = ({user, setUser}) => {
             mode: 'cors'
         };
 
-        fetch(process.env.SERVER + 'api/posts/create', options)
+        fetch(process.env.REACT_APP_SERVER + 'api/posts/create', options)
         .then(function(res) { return res.json(); })
         .then(function(res) {
             if (res.errors) { setFormErrors(res.errors); } // Fields required

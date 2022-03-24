@@ -22,7 +22,7 @@ const PostDelete = ({user, setUser}) => {
             mode: 'cors'
         };
 
-        fetch(process.env.SERVER + 'api/posts/' + postId + '/delete', options)
+        fetch(process.env.REACT_APP_SERVER + 'api/posts/' + postId + '/delete', options)
         .then(function(res) { return res.json(); })
         .then(function(res) {
             // Success. Redirect to Posts page

@@ -10,7 +10,7 @@ const PostEdit = ({user, setUser}) => {
     // Get API data on componentDidUpdate
 	useEffect(() => {
         if (user) {
-            fetch(process.env.SERVER + 'api/posts/' + postId, {mode: 'cors'})
+            fetch(process.env.REACT_APP_SERVER + 'api/posts/' + postId, {mode: 'cors'})
             .then(function(res) { return res.json(); })
             .then(function(res) { setForm(res); })
         }
@@ -57,7 +57,7 @@ const PostEdit = ({user, setUser}) => {
             mode: 'cors'
         };
 
-        fetch(process.env.SERVER + 'api/posts/' + postId + '/update', options)
+        fetch(process.env.REACT_APP_SERVER + 'api/posts/' + postId + '/update', options)
         .then(function(res) { return res.json(); })
         .then(function(res) {
             if (res.errors) { setFormErrors(res.errors); } // Fields required
