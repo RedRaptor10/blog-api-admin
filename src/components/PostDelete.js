@@ -1,9 +1,10 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { getCookie, deleteCookie } from '../helpers/cookies.js';
 
 const PostDelete = ({user, setUser}) => {
     const { postId } = useParams(); // Get id from url
+    const navigate = useNavigate();
 
     const deletePost = event => {
         event.preventDefault();
@@ -26,7 +27,7 @@ const PostDelete = ({user, setUser}) => {
         .then(function(res) { return res.json(); })
         .then(function(res) {
             // Success. Redirect to Posts page
-            window.location.href = '/posts';
+            navigate('/posts');
         });
     };
 

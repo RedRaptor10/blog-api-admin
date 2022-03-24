@@ -50,7 +50,7 @@ const App = () => {
     <HashRouter>
       <Header user={user} setUser={setUser} deleteCookie={deleteCookie} />
       <Routes>
-        <Route exact path="/" element={<Home user={user} />} />
+        <Route exact path="/" element={<Home user={user} setUser={setUser} />} />
         <Route exact path="/users" element={<Users user={user} />} />
         <Route exact path="/users/:username/delete" element={<UserDelete user={user} setUser={setUser} />} />
         <Route exact path="/posts" element={<Posts user={user} setUser={setUser} />} />

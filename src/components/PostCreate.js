@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { getCookie, deleteCookie } from '../helpers/cookies.js';
 
 const PostCreate = ({user, setUser}) => {
@@ -8,6 +9,7 @@ const PostCreate = ({user, setUser}) => {
         published: false
     });
     const [formErrors, setFormErrors] = useState([]);
+    const navigate = useNavigate();
 
     const handleChange = event => {
         // On published form change, set state to form value
@@ -56,7 +58,7 @@ const PostCreate = ({user, setUser}) => {
             if (res.errors) { setFormErrors(res.errors); } // Fields required
             else {
                 // Success. Redirect to Posts page
-                window.location.href = '/posts';
+                navigate('/posts');
             }
         });
     };

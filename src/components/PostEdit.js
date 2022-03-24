@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { getCookie, deleteCookie } from '../helpers/cookies.js';
 
 const PostEdit = ({user, setUser}) => {
     const { postId } = useParams(); // Get post id from url
     const [form, setForm] = useState();
     const [formErrors, setFormErrors] = useState([]);
+    const navigate = useNavigate();
 
     // Get API data on componentDidUpdate
 	useEffect(() => {
@@ -63,7 +64,7 @@ const PostEdit = ({user, setUser}) => {
             if (res.errors) { setFormErrors(res.errors); } // Fields required
             else {
                 // Success. Redirect to Posts page
-                window.location.href = '/posts';
+                navigate('/posts');
             }
         });
     };

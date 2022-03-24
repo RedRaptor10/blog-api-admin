@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Home = ({user}) => {
+const Home = ({user, setUser}) => {
     const [form, setForm] = useState({
         username: '',
         password: ''
@@ -38,7 +38,7 @@ const Home = ({user}) => {
             else {
                 // Success. Set token as a cookie and redirect to Home page
                 document.cookie = 'blog_api_token=' + res.token + '; SameSite=Lax; path=/';
-                window.location.href = '/';
+                setUser(res.user);
             }
         });
     };

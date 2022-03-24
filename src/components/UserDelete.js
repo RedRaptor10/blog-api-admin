@@ -1,9 +1,10 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { getCookie, deleteCookie } from '../helpers/cookies.js';
 
 const UserDelete = ({user, setUser}) => {
     const { username } = useParams(); // Get username from url
+    const navigate = useNavigate();
 
     const deleteUser = event => {
         event.preventDefault();
@@ -29,7 +30,7 @@ const UserDelete = ({user, setUser}) => {
         .then(function(res) { return res.json(); })
         .then(function(res) {
             // Success. Redirect to Users page
-            window.location.href = '/users';
+            navigate('/users');
         });
     };
 
