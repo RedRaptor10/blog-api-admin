@@ -52,7 +52,7 @@ table {
   --primary-color: rgb(32, 32, 32);
   --background-color: rgb(24, 24, 24);
   --color: rgb(224, 224, 224);
-  --link-color: rgb(128, 128, 128);
+  --link-color: rgb(192, 192, 192);
 }
 
 body {
@@ -107,6 +107,15 @@ header button {
   transition: 0.1s;
 }
 
+header #username {
+  margin-right: 12px;
+  cursor: default;
+}
+
+header #username:hover {
+  color: var(--color);
+}
+
 header button:hover {
   color: #fff;
 }
@@ -141,34 +150,316 @@ main {
 
 /* Log In */
 #log-in-form {
-    width: 25%;
-    margin: 0 auto 0 auto;
-  }
+  width: 25%;
+  margin: 0 auto 0 auto;
+}
 
-  #log-in-form input {
-    display: block;
-    background: var(--primary-color);
-    width: 100%;
-    margin: 12px 0 12px 0;
-    color: #fff;
-    font-size: 16px;
-    border: 0;
-    border-radius: 4px;
-  }
+#log-in-form input {
+  display: block;
+  background: var(--primary-color);
+  width: 100%;
+  margin: 12px 0 12px 0;
+  padding: 12px;
+  color: #fff;
+  font-family: 'Helvetica', 'Trebuchet MS', 'Arial', 'sans-serif';
+  font-size: 16px;
+  border: 0;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 
-  #log-in-form button {
-    background: var(--primary-color);
-    padding: 4px 16px 4px 16px;
-    color: var(--color);
-    font-size: 20px;
-    border-radius: 4px;
-  }
+#log-in-form button {
+  background: var(--primary-color);
+  padding: 4px 16px 4px 16px;
+  color: var(--color);
+  font-size: 20px;
+  border-radius: 4px;
+}
 
-  #log-in-form button:hover {
-    color: #fff;
-  }
+#log-in-form button:hover {
+  color: #fff;
+}
 
-  #form-errors {
-    list-style: disc;
-    margin-top: 12px;
-  }
+#form-errors {
+  list-style: disc;
+  margin-top: 12px;
+}
+
+/* Post Form */
+#post-form {
+  width: 50%;
+  margin: 32px auto 32px auto;
+}
+
+#post-form label {
+  font-size: 20px;
+}
+
+#post-form input[type=text], #post-form textarea {
+  display: block;
+  background: var(--primary-color);
+  width: 100%;
+  margin: 12px 0 12px 0;
+  padding: 12px;
+  color: #fff;
+  font-family: 'Helvetica', 'Trebuchet MS', 'Arial', 'sans-serif';
+  font-size: 20px;
+  border: 0;
+  border-radius: 4px;
+}
+
+#post-form textarea {
+  height: 200px;
+  resize: none;
+}
+
+#post-form input[type=checkbox] {
+  cursor: pointer;
+}
+
+#post-form button {
+  background: var(--primary-color);
+  float: right;
+  padding: 4px 16px 4px 16px;
+  color: var(--color);
+  font-size: 20px;
+  border-radius: 4px;
+}
+
+#post-form button:hover {
+  color: #fff;
+}
+
+/* Home */
+#home-items {
+  display: flex;
+  justify-content: center;
+}
+
+.home-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: var(--primary-color);
+  width: 300px;
+  height: 150px;
+  margin-right: 32px;
+  font-size: 32px;
+  border-radius: 4px;
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Users / Posts */
+table {
+  width: 75%;
+  margin: 32px auto 32px auto;
+  border: 1px solid rgb(16, 16, 16);
+}
+
+table th {
+  background: rgb(48, 48, 48);
+  padding: 12px;
+  text-align: left;
+}
+
+#table-users th {
+  width: 25%;
+}
+
+#table-posts th {
+  width: 20%;
+}
+
+table td {
+  background: var(--primary-color);
+  padding: 12px;
+  border-top: 1px solid rgb(16, 16, 16);
+}
+
+table a, table span {
+  margin-right: 12px;
+  color: var(--link-color);
+}
+
+table span {
+  cursor: pointer;
+}
+
+table a:hover, table span:hover {
+  color: #fff;
+}
+
+#prompt {
+  width: 75%;
+  margin: 32px auto 32px auto;
+  font-size: 20px;
+  text-align: center;
+}
+
+#prompt button {
+  background: rgb(48, 48, 48);
+  margin: 32px 16px 0 16px;
+  padding: 4px 8px 4px 8px;
+  color: var(--color);
+  font-size: 20px;
+  border-radius: 4px;
+}
+
+#prompt button:hover {
+  color: #fff;
+}
+
+/* Post */
+#admin-controls {
+  text-align: right;
+}
+
+#admin-controls a {
+  margin-right: 12px;
+}
+
+#admin-controls span {
+  color: var(--link-color);
+  cursor: pointer;
+}
+
+#admin-controls span:hover {
+  color: #fff;
+}
+
+#post a {
+  color: var(--link-color);
+}
+
+#post a:hover {
+  color: #fff;
+}
+
+#post-author, #post-date {
+  margin-top: 12px;
+  font-size: 20px;
+  font-style: italic;
+}
+
+#post-content {
+  margin: 24px 0 24px 0;
+  font-size: 24px;
+}
+
+/* Comments */
+#post-comments-title {
+  margin: 24px 0 24px 0;
+}
+
+#post-comments-prompt {
+  margin-bottom: 24px;
+}
+
+#comment-form {
+  margin: 24px auto 24px auto;
+}
+
+#comment-form textarea {
+  background: var(--primary-color);
+  width: 100%;
+  height: 96px;
+  margin: 12px 0 12px 0;
+  color: #fff;
+  font-size: 16px;
+  border: 0;
+  border-radius: 4px;
+  resize: none;
+}
+
+#comment-form button {
+  background: var(--primary-color);
+  float: right;
+  padding: 4px 16px 4px 16px;
+  color: var(--color);
+  font-size: 20px;
+  border-radius: 4px;
+}
+
+#comment-form button:hover {
+  color: #fff;
+}
+
+#comment-form:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+#post-comments {
+  width: 50%;
+  margin: 32px auto 0 auto;
+}
+
+.comment-controls span {
+  color: var(--link-color);
+}
+
+.comment-controls span:hover {
+  color: #fff;
+}
+
+.comment-date {
+  margin-left: 12px;
+}
+
+.comment-controls {
+  float: right;
+}
+
+.comment-controls span {
+  color: var(--link-color);
+  cursor: pointer;
+}
+
+.comment-controls span:hover {
+  color: #fff;
+}
+
+.comment-delete {
+  margin-left: 12px;
+}
+
+.comment-content {
+  margin: 24px 0 24px 0;
+  clear: both;
+}
+
+.comment-update-form {
+  margin-top: 24px;
+}
+
+.comment-update-form textarea {
+  background: var(--primary-color);
+  width: 100%;
+  margin-bottom: 12px;
+  color: #fff;
+  font-size: 16px;
+  border: 0;
+  border-radius: 4px;
+  resize: none;
+}
+
+.comment-update-form button {
+  background: var(--primary-color);
+  float: right;
+  margin-bottom: 12px;
+  padding: 4px 16px 4px 16px;
+  color: var(--color);
+  font-size: 20px;
+  border-radius: 4px;
+}
+
+.comment-update-form button:hover {
+  color: #fff;
+}
+
+.comment-update-form:after {
+  content: '';
+  display: block;
+  clear: both;
+}

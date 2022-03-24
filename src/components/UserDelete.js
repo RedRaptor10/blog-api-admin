@@ -34,13 +34,19 @@ const UserDelete = ({user, setUser}) => {
     };
 
     return (
-        user ?
-            <div>
-                Are you sure you want to delete user {username}?
-                <button onClick={deleteUser}>Delete</button>
-                <Link to="/">Cancel</Link>
-            </div>
-        : null
+        <main>
+            {user ?
+                <div id="prompt">
+                    Are you sure you want to delete user {username}?
+                    <div>
+                        <button onClick={deleteUser}>Delete</button>
+                        <Link to="/">
+                            <button>Cancel</button>
+                        </Link>
+                    </div>
+                </div>
+            : null}
+        </main>
     );
 };
 

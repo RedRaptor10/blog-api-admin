@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { formatDate } from '../helpers/formatDate.js';
 import { getCookie, deleteCookie } from '../helpers/cookies.js';
 
@@ -102,7 +102,7 @@ const Comment = ({user, setUser, comment, setComments, commentToUpdate, setComme
 
     return(
         <div className="comment">
-            <span className="comment-author"><Link to={'/users/' + comment.author.username}>{comment.author.username}</Link></span>
+            <span className="comment-author">{comment.author.username}</span>
             <span className="comment-date">{formatDate(comment.date)}</span>
             <span className="comment-controls">
                 <span className="comment-edit" onClick={() => {

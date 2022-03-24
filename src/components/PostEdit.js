@@ -69,28 +69,30 @@ const PostEdit = ({user, setUser}) => {
     };
 
     return (
-        user && form ?
-            <div id="post-edit">
-                <form id="post-edit-form" action="">
-                    <label htmlFor="title">Title</label>
-                    <input type="text" name="title" onChange={handleChange} value={form.title}></input>
-                    <label htmlFor="content">Content</label>
-                    <textarea type="textarea" name="content" onChange={handleChange} value={form.content}></textarea>
-                    <input type="checkbox" name="published" onChange={handleChange} checked={form.published}></input>
-                    <label htmlFor="published">Published</label>
-                    <button type="submit" name="submit" onClick={updatePost}>Update</button>
-                    {formErrors.length !== 0 ?
-                        <ul id="form-errors">
-                            {formErrors.map((formError, i) => {
-                                return(
-                                    <li key={i}>{formError.msg}</li>
-                                )
-                            })}
-                        </ul>
-                    : null}
-                </form>
-            </div>
-        : null
+        <main>
+            {user && form ?
+                <div id="post-edit">
+                    <form id="post-form" action="">
+                        <label htmlFor="title">Title</label>
+                        <input type="text" name="title" onChange={handleChange} value={form.title}></input>
+                        <label htmlFor="content">Content</label>
+                        <textarea type="textarea" name="content" onChange={handleChange} value={form.content}></textarea>
+                        <input type="checkbox" name="published" onChange={handleChange} checked={form.published}></input>
+                        <label htmlFor="published">Published</label>
+                        <button type="submit" name="submit" onClick={updatePost}>Update</button>
+                        {formErrors.length !== 0 ?
+                            <ul id="form-errors">
+                                {formErrors.map((formError, i) => {
+                                    return(
+                                        <li key={i}>{formError.msg}</li>
+                                    )
+                                })}
+                            </ul>
+                        : null}
+                    </form>
+                </div>
+            : null}
+        </main>
     );
 };
 

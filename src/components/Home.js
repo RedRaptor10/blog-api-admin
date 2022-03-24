@@ -46,10 +46,16 @@ const Home = ({user}) => {
 	return(
 		<main id="home">
             {user ?
-                <div>
-                    <Link to="/users">Users</Link>
-                    <Link to="/posts">Posts</Link>
-                    <Link to="/posts/create">New Post</Link>
+                <div id="home-items">
+                    <Link to="/users">
+                        <div className="home-item">Users</div>
+                    </Link>
+                    <Link to="/posts">
+                        <div className="home-item">Posts</div>
+                    </Link>
+                    <Link to="/posts/create">
+                        <div className="home-item">New Post</div>
+                    </Link>
                 </div>
             :
                 <form id="log-in-form" action="">

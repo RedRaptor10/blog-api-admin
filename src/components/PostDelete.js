@@ -31,13 +31,19 @@ const PostDelete = ({user, setUser}) => {
     };
 
     return (
-        user ?
-            <div>
-                Are you sure you want to delete this post?
-                <button onClick={deletePost}>Delete</button>
-                <Link to="/">Cancel</Link>
-            </div>
-        : null
+        <main>
+            {user ?
+                <div id="prompt">
+                    Are you sure you want to delete this post?
+                    <div>
+                        <button onClick={deletePost}>Delete</button>
+                        <Link to="/">
+                            <button>Cancel</button>
+                        </Link>
+                    </div>
+                </div>
+            : null}
+        </main>
     );
 };
 

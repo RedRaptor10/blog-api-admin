@@ -65,44 +65,42 @@ const Posts = ({user, setUser}) => {
     };
 
     return (
-        user && posts.length !== 0 ?
-            <table>
-                <tbody>
-                    <tr>
-                        <th>id</th>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                        <th>Controls</th>
-                    </tr>
-                    {posts.map((post) => {
-                        return (
-                            <tr key={post._id}>
-                                <td>
-                                <Link to={`/posts/${post._id}`}>{post._id}</Link>
-                                </td>
-                                <td>
-                                    <Link to={`/posts/${post._id}`}>{post.title}</Link>
-                                </td>
-                                <td>{post.author.username}</td>
-                                <td>{formatDate(post.date)}</td>
-                                <td>{post.published ? 'Published' : 'Draft'}</td>
-                                <td>
-                                    <Link to={`/posts/${post._id}/update`}>
-                                        <button>Edit</button>
-                                    </Link>
-                                    <Link to={`/posts/${post._id}/delete`}>
-                                        <button>Delete</button>
-                                    </Link>
-                                    <button onClick={event => { setPublished(event, post); }}>{post.published ? 'Unpublish' : 'Publish'}</button>
-                                </td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </table>
-        : null
+        <main>
+            {user && posts.length !== 0 ?
+                <table id="table-posts">
+                    <tbody>
+                        <tr>
+                            <th>id</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Controls</th>
+                        </tr>
+                        {posts.map((post) => {
+                            return (
+                                <tr key={post._id}>
+                                    <td>
+                                    <Link to={`/posts/${post._id}`}>{post._id}</Link>
+                                    </td>
+                                    <td>
+                                        <Link to={`/posts/${post._id}`}>{post.title}</Link>
+                                    </td>
+                                    <td>{post.author.username}</td>
+                                    <td>{formatDate(post.date)}</td>
+                                    <td>{post.published ? 'Published' : 'Draft'}</td>
+                                    <td>
+                                        <Link to={`/posts/${post._id}/update`}>Edit</Link>
+                                        <Link to={`/posts/${post._id}/delete`}>Delete</Link>
+                                        <span onClick={event => { setPublished(event, post); }}>{post.published ? 'Unpublish' : 'Publish'}</span>
+                                    </td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>
+            : null}
+        </main>
     );
 };
 

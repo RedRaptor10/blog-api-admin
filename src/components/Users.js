@@ -14,34 +14,34 @@ const User = ({user}) => {
     }, [user]);
 
     return (
-        user && users.length !== 0 ?
-            <table>
-                <tbody>
-                    <tr>
-                        <th>id</th>
-                        <th>Username</th>
-                        <th>Role</th>
-                        <th>Controls</th>
-                    </tr>
-                    {users.map((userData) => {
-                        return (
-                            <tr key={userData._id}>
-                                <td>{userData._id}</td>
-                                <td>{userData.username}</td>
-                                <td>{userData.role}</td>
-                                <td>
-                                    {userData.role !== 'admin' ?
-                                        <Link to={`/users/${userData.username}/delete`}>
-                                            <button>Delete</button>
-                                        </Link>
-                                    : null}
-                                </td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </table>
-        : null
+        <main>
+            {user && users.length !== 0 ?
+                <table id="table-users">
+                    <tbody>
+                        <tr>
+                            <th>id</th>
+                            <th>Username</th>
+                            <th>Role</th>
+                            <th>Controls</th>
+                        </tr>
+                        {users.map((userData) => {
+                            return (
+                                <tr key={userData._id}>
+                                    <td>{userData._id}</td>
+                                    <td>{userData.username}</td>
+                                    <td>{userData.role}</td>
+                                    <td>
+                                        {userData.role !== 'admin' ?
+                                            <Link to={`/users/${userData.username}/delete`}>Delete</Link>
+                                        : null}
+                                    </td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>
+            : null}
+        </main>
     );
 };
 

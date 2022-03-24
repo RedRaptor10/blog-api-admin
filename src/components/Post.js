@@ -77,15 +77,17 @@ const Post = ({user, setUser}) => {
         post && post.author ?
             <main id="post">
                 <div id="admin-controls">
+                    <Link to={`/posts/${post._id}/update`}>Edit</Link>
+                    <Link to={`/posts/${post._id}/delete`}>Delete</Link>
                     {!post.published ?
-                        <button onClick={setPublished}>Publish</button>
+                        <span onClick={setPublished}>Publish</span>
                     :
-                        <button onClick={setPublished}>Unpublish</button>
+                        <span onClick={setPublished}>Unpublish</span>
                     }
                 </div>
                 <div id="post-info">
                     <h1 id="post-title">{post.title}</h1>
-                    <div id="post-author">by <Link to={'/users/' + post.author.username}>{post.author.username}</Link></div>
+                    <div id="post-author">by {post.author.username}</div>
                     <div id="post-date">{formatDate(post.date)}</div>
                     <p id="post-content">{post.content}</p>
                 </div>
